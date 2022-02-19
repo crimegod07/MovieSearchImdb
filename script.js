@@ -116,9 +116,9 @@ function showfavs() {
     let pictures = JSON.parse(localStorage["pictures"]);
     let b;
     let pic;
-    let j = -1
+
     for (let a in storedDatas) {
-        j++;
+
         if (keys[storedDatas[a]]) {
             continue;
         } else {
@@ -128,17 +128,17 @@ function showfavs() {
             console.log(pic);
             const div1 = document.createElement('div');
             div1.innerHTML = `
-     <div id=b${j}>
+     <div>
       <img style="width:300px; height:300px; margin-top:40px " src="${pic}"> </img>
        <p>${b}</p>
-       <button id=delete${j}> Remove favourites </button>
+       <button id=delete${a}> Remove favourites </button>
      </div>
      `
             fav2.appendChild(div1);
         }
-        document.getElementById(`delete${j}`).onclick = function() {
+        document.getElementById(`delete${a}`).onclick = function() {
             console.log("hyeaaa");
-            eleDelete(j, storedDatas, pictures)
+            eleDelete(a, storedDatas, pictures)
         }
 
     }
