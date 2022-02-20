@@ -1,24 +1,26 @@
+//Accessing All The Elements from index.html
+const apiUrl = 'https://www.omdbapi.com?apiKey=769a9225';
+const BASE_URL = "https://www.omdbapi.com?apiKey=769a9225&i=";
 const main = document.getElementById("main");
 const form = document.getElementById("form");
-const apiUrl = 'https://www.omdbapi.com?apiKey=769a9225'
-const BASE_URL = "https://www.omdbapi.com?apiKey=769a9225&i="
+
 const movie = document.getElementById("movies");
 const favLists = document.getElementById('favLists');
 
 
-const search = document.getElementById("search")
-const datalists = document.getElementById("datalist")
-const button = document.querySelector(".btn")
+const search = document.getElementById("search");
+const datalists = document.getElementById("datalist");
+const button = document.querySelector(".btn");
 
-
+//Searching Movies 
 search.oninput = function() {
     allhero(search.value);
 }
 
-
-
+//Function For Adding suggestions like Google While Typing Movie Name
 const keyss = {}
 async function allhero(input) {
+    //Fetching Data From OMDB Using  OMDB API
     const resp = await fetch(`https://www.omdbapi.com?apiKey=769a9225&s=${input}`)
     const data = await resp.json()
     for (let i in data.Search) {
@@ -31,6 +33,7 @@ async function allhero(input) {
             datalists.appendChild(opt)
         }
     }
+    //Search Movie Button
     button.onclick = function(e) {
         e.preventDefault()
         searchMovie(data)
@@ -39,7 +42,7 @@ async function allhero(input) {
     }
 }
 
-
+//Function For Showing Search Result in Main Tag
 function searchMovie(input) {
     let i = 0;
     main.innerHTML = ""
@@ -62,7 +65,7 @@ function searchMovie(input) {
             console.log(arr);
             console.log(p);
 
-            localStorage["heroes"] = JSON.stringify(arr);
+            localStorage["movies"] = JSON.stringify(arr);
             localStorage["pictures"] = JSON.stringify(p);
         }
 
@@ -76,6 +79,7 @@ function searchMovie(input) {
     }
 }
 
+//Function For Showing More Details Of Any Movies
 function openNav(movie) {
     console.log(movie);
     main.innerHTML = ""
@@ -112,7 +116,7 @@ function showfavs() {
     var keys = {};
     fav2.style.display = "block"
     main.style.display = "none";
-    let storedDatas = JSON.parse(localStorage["heroes"]);
+    let storedDatas = JSON.parse(localStorage["movies"]);
     let pictures = JSON.parse(localStorage["pictures"]);
     let b;
     let pic;
@@ -136,45 +140,32 @@ function showfavs() {
      `
             fav2.appendChild(div1);
         }
+
         document.getElementById(`delete${a}`).onclick = function() {
-            console.log("hyeaaa");
-            eleDelete(a, storedDatas, pictures)
+            eleDelete(a, storedDatas, pictures);
+
         }
 
     }
 
 }
 
-
-movie.onclick = function() {
-    main.style.display = "none";
-    fav2.style.display = "none";
-}
-
-
-
-// function registerClickHandler() {
-//     // Register click event handler for button of class 'remove'
-//     "use strict";
-//     var node = document.getElementById("image");
-//     if (node.parentNode) {
-//         node.parentNode.removeChild(node);
-//     }
-// }
-
-
-
-
+//Function For Deleting Favourites 
 function eleDelete(index, storedDatas, pictures) {
-    console.log("hello");
-    console.log(index);
+
     storedDatas.splice(index, 1)
     pictures.splice(index, 1)
-    console.log(storedDatas);
-    console.log(pictures);
-    localStorage["heroes"] = JSON.stringify(storedDatas);
+
+    localStorage["movies"] = JSON.stringify(storedDatas);
     localStorage["pictures"] = JSON.stringify(pictures);
+
     fav2.innerHTML = ""
 
     showfavs()
+}
+
+//Go to Home
+movie.onclick = function() {
+    main.style.display = "none";
+    fav2.style.display = "none";
 }

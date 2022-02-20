@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,33 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <a  id="movies" href="#">Movies</a>
-  
-        <form id="form"  method="get">
-            <input
-                list="datalist"
-                type="text"
-                id="search" 
-                placeholder="Search"
-            />
-            <datalist id="datalist"></datalist> 
+    <!--                   Navigationn Bar                 -->
+    <nav>
+        <a id="movies" href="#">Movies</a>
+
+        <form id="form" method="get">
+            <input list="datalist" type="text" id="search"   placeholder="Search" />
+            <datalist id="datalist"></datalist>
             <button class="btn">Search</button>
         </form>
-       <a id="favLists">Favourites</a>
-    </header>
 
+        <a id="favLists">Favourites</a>
+    </nav>
+
+    <!--                Search Movie Container           -->
     <main id="main">
 
     </main>
+
+    <!--                 Favourites List Div             -->
     <div id="favourites">
 
     </div>
+
+
     <script src="script.js"></script>
 </body>
+
 </html>

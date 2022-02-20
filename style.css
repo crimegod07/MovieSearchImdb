@@ -4,7 +4,10 @@
     box-sizing: border-box;
 }
 
-header {
+
+/*     Navigation  Bar     */
+
+nav {
     height: 60px;
     width: 100vw;
     display: flex;
@@ -14,7 +17,7 @@ header {
     background-image: repeating-linear-gradient(45deg, #ffdaba, transparent 100px);
 }
 
-header a {
+nav a {
     font-size: 34px;
     margin: 61px;
     text-decoration: none;
