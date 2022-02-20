@@ -48,7 +48,6 @@ function searchMovie(input) {
     main.innerHTML = ""
     for (let element of input.Search) {
 
-        console.log(element.Title);
         let movie1 = document.createElement("div")
 
         movie1.innerHTML = `<img id=${element.imdbID} src=${element.Poster} alt=${element.Title}>
@@ -63,8 +62,7 @@ function searchMovie(input) {
             let fav = element.Title;
             arr.push(fav);
             p.push(element.Poster);
-            console.log(arr);
-            console.log(p);
+
 
             //local storage so that my favourites will not get dissapeared
             localStorage["movies"] = JSON.stringify(arr);
@@ -74,8 +72,8 @@ function searchMovie(input) {
 
         document.getElementById(element.imdbID).addEventListener("click", () => {
 
-            console.log(element.Title);
             openNav(element.imdbID)
+
         })
         i++;
     }
@@ -83,10 +81,9 @@ function searchMovie(input) {
 
 //Function For Showing More Details Of Any Movies
 function openNav(movie) {
-    console.log(movie);
     main.innerHTML = ""
     fetch(BASE_URL + movie).then(res => res.json()).then(videoData => {
-        console.log(videoData);
+
         const { Poster, Actors, Director, Released, Genre, Title, Ratings, Plot } = videoData
 
         //creating elements for extra details of movies and appending to main 
@@ -133,7 +130,6 @@ function showfavs() {
             keys[storedDatas[a]] = a;
             b = storedDatas[a];
             pic = pictures[a];
-            console.log(pic);
             const div1 = document.createElement('div');
             div1.innerHTML = `
      <div>
