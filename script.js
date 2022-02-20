@@ -56,6 +56,7 @@ function searchMovie(input) {
         <p>Release Year: ${element.Year}</p>
         <button id=${i}> Add Favourites </button>
         `
+            //  appending above created element to main 
         main.append(movie1)
 
         document.getElementById(`${i}`).onclick = function() {
@@ -65,6 +66,7 @@ function searchMovie(input) {
             console.log(arr);
             console.log(p);
 
+            //local storage so that my favourites will not get dissapeared
             localStorage["movies"] = JSON.stringify(arr);
             localStorage["pictures"] = JSON.stringify(p);
         }
@@ -86,9 +88,11 @@ function openNav(movie) {
     fetch(BASE_URL + movie).then(res => res.json()).then(videoData => {
         console.log(videoData);
         const { Poster, Actors, Director, Released, Genre, Title, Ratings, Plot } = videoData
+
+        //creating elements for extra details of movies and appending to main 
         let newDiv = document.createElement("div")
         newDiv.className = "each-movie"
-        newDiv.innerHTML = `<img src=${Poster}>
+        newDiv.innerHTML = `<img src=${Poster}>    
     <p>${Title}<p>
     <div><span>${Released}</span> <span>${Ratings[0].Value}</span></div>
     <p>Directed by: ${Director}</p>
