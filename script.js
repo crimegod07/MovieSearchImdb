@@ -89,7 +89,6 @@ function openNav(movie) {
         //creating elements for extra details of movies and appending to main 
         let newDiv = document.createElement("div")
         newDiv.className = "each-movie"
-        newDiv.style.height = "100 vh"
         newDiv.innerHTML = `<img src=${Poster}>    
     <p>${Title}<p>
     <div><span>${Released}</span> <span>${Ratings[0].Value}</span></div>
